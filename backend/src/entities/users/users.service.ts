@@ -43,7 +43,7 @@ export class UsersService {
   async findAllUsers(query: any): Promise<{ data: UserDocument[]; total: number }> {
     const filter = await createMongooseFilter(query, this.userModel.schema.paths);
     const results = Promise.allSettled([
-      this.userModel.find(filter.filter).limit(filter.limit).skip(filter.offset).sort(filter.sort).populate("branch"),
+      this.userModel.find(filter.filter).limit(filter.limit).skip(filter.offset).sort(filter.sort),
       this.userModel.countDocuments(filter.filter),
     ]);
     const [data, total] = await results;
@@ -56,23 +56,21 @@ export class UsersService {
     return { data: data.value, total: total.value };
   }
   async findUserById(id: string): Promise<UserDocument> {
-    return this.userModel.findById(id).populate("branch");
+    return this.userModel.findById(id);
   }
   async findUserInternal(filter): Promise<UserDocument[]> {
-    return this.userModel.find(filter).populate("branch");
+    return this.userModel.find(filter);
   }
   async findUserOne(filter: MongooseFilter<IUser>): Promise<UserDocument> {
-    return this.userModel.findOne(filter.filter).populate("branch");
+    return this.userModel.findOne(filter.filter);
   }
   async findLogin(search: string): Promise<UserDocument> {
     if (!search) {
       return null;
     }
-    return this.userModel
-      .findOne({
-        $or: [{ "login.username": search }, { "login.email": search }],
-      })
-      .populate("branch");
+    return this.userModel.findOne({
+      $or: [{ "login.username": search }, { "login.email": search }],
+    });
   }
 
   async updateUserById(id: string, user: IUser): Promise<UserDocument> {

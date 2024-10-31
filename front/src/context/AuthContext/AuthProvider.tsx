@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { Spinner } from "@/components/ui";
 
 import { AuthContextState, AuthContext } from ".";
-import { login as serviceLogin, getAuth } from "@/services";
+import { login as serviceLogin, getAuth } from "@/services/auth";
 import storage from "@/utils/storage";
 import { Login } from "@/types";
 
