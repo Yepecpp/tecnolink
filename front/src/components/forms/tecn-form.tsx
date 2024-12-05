@@ -32,6 +32,7 @@ import { PenToolIcon as Tool } from "lucide-react";
 import { addUser } from "@/services/users/create";
 import { UserRoles, UserZod } from "@/types";
 import { toast } from "sonner";
+import { useNavigate } from "react-router-dom";
 
 type UserFormData = z.infer<typeof UserZod>;
 
@@ -40,6 +41,7 @@ export default function TechnicianForm() {
 
   const form = useForm<UserFormData>({
     resolver: zodResolver(UserZod),
+    mode: "onBlur",
     defaultValues: {
       login: {
         username: "",
@@ -58,8 +60,8 @@ export default function TechnicianForm() {
       },
     },
   });
-
-  console.log("form", form.getValues());
+  const navigate = useNavigate();
+  // console.log("form", form.getValues());
   const onSubmit = async (data: UserFormData) => {
     console.log("data", data);
     setError("");
@@ -68,7 +70,9 @@ export default function TechnicianForm() {
       console.log("Technician data submitted:", data);
       addUser(data);
       toast.success("Technician created successfully");
-
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      // Redirect the user to the technicians list
+      navigate("/");
       // If creation is successful, you might redirect the user or update the app state
     } catch (err) {
       console.error(err);
@@ -276,7 +280,13 @@ export default function TechnicianForm() {
               )}
             </CardContent>
             <CardFooter>
-              <Button type="submit" className="w-full">
+              <Button
+                type="submit"
+                className="w-full"
+                disabled={
+                  !form.formState.isValid || form.formState.isSubmitSuccessful
+                }
+              >
                 Create Technician
               </Button>
             </CardFooter>

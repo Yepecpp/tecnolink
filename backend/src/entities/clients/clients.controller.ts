@@ -54,7 +54,7 @@ export class ClientsController {
     if (!parseResult.success) {
       throw new HttpException("Bad Request", 400);
     }
-    if (UserRoles.seller === userData.role && parseResult.data) {
+    if (UserRoles.tecnician === userData.role && parseResult.data) {
       const dbClient = await this.clientService.findClientById(parseResult.data.id);
       if (!dbClient) {
         throw new HttpException("Client not found", 404);

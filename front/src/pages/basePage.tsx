@@ -1,67 +1,13 @@
+import { HeaderPage } from "@/components/header";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CheckCircle, Star, Shield, PenTool } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useAuth } from "@/context";
 
 export default function LandingPage() {
-  const { auth, logout } = useAuth();
   return (
     <div className="flex flex-col min-h-screen">
-      <header className="px-4 lg:px-6 h-14 flex items-center">
-        <Link className="flex items-center justify-center" to="#">
-          <PenTool className="h-6 w-6 mr-2" />
-          <span className="font-bold">Tecnolink</span>
-        </Link>
-        <nav className="ml-auto flex gap-4 sm:gap-6">
-          <Link
-            className="text-sm font-medium hover:underline underline-offset-4"
-            to="#"
-          >
-            How It Works
-          </Link>
-          <Link
-            className="text-sm font-medium hover:underline underline-offset-4"
-            to="#"
-          >
-            Services
-          </Link>
-          <Link
-            className="text-sm font-medium hover:underline underline-offset-4"
-            to="/create"
-          >
-            For Technicians
-          </Link>
-          <Link
-            className="text-sm font-medium hover:underline underline-offset-4"
-            to="#"
-          >
-            About Us
-          </Link>
-          {!auth ? (
-            <Link
-              className="text-sm font-medium hover:underline underline-offset-4"
-              to="/login"
-            >
-              Login
-            </Link>
-          ) : (
-            <>
-              <p
-                className="text-sm font-medium hover:underline underline-offset-4 cursor-pointer"
-                onClick={() => {
-                  logout();
-                }}
-              >
-                Log out
-              </p>
-              <p className="text-sm font-medium hover:underline">
-                {auth.user.name} {auth.user.lastName}
-              </p>
-            </>
-          )}
-        </nav>
-      </header>
+      <HeaderPage />
       <main className="flex-1">
         <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48">
           <div className="container px-4 md:px-6">

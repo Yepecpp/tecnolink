@@ -56,9 +56,6 @@ importers:
       '@radix-ui/react-tooltip':
         specifier: ^1.1.2
         version: 1.1.4(@types/react-dom@18.3.0)(@types/react@18.3.9)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@types/node':
-        specifier: ^22.7.4
-        version: 22.7.4
       autoprefixer:
         specifier: ^10.4.20
         version: 10.4.20(postcss@8.4.47)
@@ -93,7 +90,7 @@ importers:
         specifier: ^18.3.1
         version: 18.3.1(react@18.3.1)
       react-hook-form:
-        specifier: ^7.53.2
+        specifier: ^7.52.2
         version: 7.53.2(react@18.3.1)
       react-router-dom:
         specifier: ^6.25.1
@@ -120,6 +117,9 @@ importers:
       '@eslint/js':
         specifier: ^9.9.0
         version: 9.11.1
+      '@types/node':
+        specifier: ^22.7.4
+        version: 22.7.4
       '@types/react':
         specifier: ^18.3.3
         version: 18.3.9
