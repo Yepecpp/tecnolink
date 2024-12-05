@@ -3,10 +3,9 @@ import { zodObjectId } from "./common/id.ci";
 import { zodDateCoerce } from "./common/parse.ci";
 import { HydratedDocument } from "mongoose";
 export enum UserRoles {
+  tecnician = "tecnician",
   admin = "admin",
-  delivery = "delivery",
-  dispatcher = "dispatcher",
-  seller = "seller",
+  client = "client",
 }
 export const UserZod = z
   .object({

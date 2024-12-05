@@ -118,7 +118,7 @@ export class User {
   @Prop({
     required: true,
     enum: UserRoles,
-    default: UserRoles.delivery,
+    default: UserRoles.tecnician,
   })
   @ApiProperty()
   role: string;

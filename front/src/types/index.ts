@@ -10,12 +10,10 @@ export type Login = {
 };
 
 export type UserStatus = "active" | "inactive" | "banned";
-
 export enum UserRoles {
-  ADMIN = "admin",
-  DELIVERY = "delivery",
-  DISPATCHER = "dispatcher",
-  SELLER = "seller",
+  tecnician = "tecnician",
+  admin = "admin",
+  client = "client",
 }
 
 export type LoginProvider = "local" | "google";
